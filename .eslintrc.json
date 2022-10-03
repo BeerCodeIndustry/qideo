@@ -84,24 +84,6 @@
       }
     ],
     "prefer-destructuring": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "all",
-        "tabWidth": 2,
-        "semi": false,
-        "singleQuote": true,
-        "jsxSingleQuote": true,
-        "arrowParens": "avoid",
-        "importOrderSeparation": true,
-        "importOrder": [
-          "^react(.)$",
-          "^antd(.)$",
-          "<THIRD_PARTY_MODULES>",
-          "^[./]"
-        ]
-      }
-    ],
     "react/prop-types": "off",
     "react/destructuring-assignment": "off",
     "no-underscore-dangle": "off",
