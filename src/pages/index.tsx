@@ -1,20 +1,16 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import { useRouter } from 'next/router'
-import { useLocale } from '../hooks/useLocale'
 import { useTranslation } from 'react-i18next'
-import { LOCALE } from '../types/localization'
+
+import { useLocale } from '../hooks/useLocale'
+import styles from '../styles/Home.module.css'
 import { LNG } from '../styles/ss'
+import { Locale } from '../types/localization'
 
 const Home: NextPage = () => {
-  const router = useRouter()
   const { changeLocale } = useLocale()
-  const { pathname, asPath, query } = router
-  const { t, i18n } = useTranslation()
-  const [s, setS] = useState(0)
+  const { t } = useTranslation()
 
   return (
     <div className={styles.container}>
@@ -27,8 +23,8 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1 className={styles.title}>{t('title')}</h1>
 
-        <LNG onClick={() => changeLocale(LOCALE.EN)}>{LOCALE.EN}</LNG>
-        <LNG onClick={() => changeLocale(LOCALE.RU)}>{LOCALE.RU}</LNG>
+        <LNG onClick={() => changeLocale(Locale.EN)}>{Locale.EN}</LNG>
+        <LNG onClick={() => changeLocale(Locale.RU)}>{Locale.RU}</LNG>
 
         <div className={styles.grid}>
           <a href='https://nextjs.org/docs' className={styles.card}>

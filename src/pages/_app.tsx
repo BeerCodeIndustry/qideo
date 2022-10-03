@@ -1,19 +1,20 @@
-import '../styles/globals.css'
-import { I18nextProvider } from 'react-i18next'
-import { useRouter } from 'next/router'
-import { i18nConfig } from '../utils/i18n'
-import type { AppProps } from 'next/app'
 import i18n from 'i18next'
+import type { AppProps } from 'next/app'
+import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import { I18nextProvider } from 'react-i18next'
 
-i18nConfig()
+import '../styles/globals.css'
+import { i18nConfig } from '../utils/i18n'
 
-function MyApp({ Component, pageProps }: AppProps) {
+i18nConfig().catch(() => {})
+
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter()
 
   useEffect(() => {
-    i18n.changeLanguage(router?.locale)
-  }, [router?.locale])
+    i18n.changeLanguage(router.locale).catch(() => {})
+  }, [router.locale])
 
   return (
     <I18nextProvider i18n={i18n}>
