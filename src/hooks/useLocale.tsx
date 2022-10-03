@@ -1,14 +1,17 @@
 import { useRouter } from 'next/router'
 
-import { LOCALE } from '../types/localization'
+import { Locale } from '../types/localization'
 
-export const useLocale = () => {
+export interface UseLocaleReturnType {
+  changeLocale: (locale: Locale) => Promise<void>
+}
+
+export const useLocale = (): UseLocaleReturnType => {
   const router = useRouter()
   const { pathname, asPath, query } = router
 
-  const changeLocale = (locale: LOCALE) => {
-    console.log('changeLocale')
-    router.push({ pathname, query }, asPath, { locale })
+  const changeLocale = async (locale: Locale): Promise<void> => {
+    await router.push({ pathname, query }, asPath, { locale })
   }
 
   return { changeLocale }

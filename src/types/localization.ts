@@ -1,9 +1,9 @@
-export enum LOCALIZATION_NAMESPACE {
+export enum LocalizationNamespace {
   QIDEO = 'qideo',
   COMMON = 'common',
 }
 
-export enum LOCALE {
+export enum Locale {
   EN = 'en',
   RU = 'ru',
 }
