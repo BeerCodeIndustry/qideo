@@ -36,6 +36,7 @@
         "exceptAfterSingleLine": true
       }
     ],
+    "@typescript-eslint/no-unsafe-member-access": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/consistent-type-definitions": "error",
     "@typescript-eslint/no-misused-promises": "off",

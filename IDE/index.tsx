@@ -1,5 +1,11 @@
 import type { NextPage } from 'next'
 
+import { Test } from './components/Test'
+
 export const IDE: NextPage = () => {
-  return <div>IDE</div>
+  return (
+    <div>
+      <Test />
+    </div>
+  )
 }
