@@ -1233,10 +1233,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@beercode/common-frontend@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@beercode/common-frontend/-/common-frontend-0.7.0.tgz#d8edac059a0413d26a3064270885dead0bc505b8"
-  integrity sha512-Ttmh/I/4eM0jWXZ+tjuPdTUNFhtaS68vgp5X/Fx3giVj7Zeq+uum9bHAEkAwTujj5N7qdm7uo62YWTxjpQERQg==
+"@beercode/common-frontend@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@beercode/common-frontend/-/common-frontend-0.7.2.tgz#f67673fc9ff213212e4af4e79de2647c5b861597"
+  integrity sha512-vWTMfOULjY5FoGBErhnt9NzOgEPI4mXgRFzKnTS7WU4+2ABxR31LxjdlL4bPI+MRcFgVz0Zh/WAdQagWUZvdoA==
   dependencies:
     "@beercode/common-icons" "0.2.0"
     "@storybook/addon-actions" "^6.5.12"
