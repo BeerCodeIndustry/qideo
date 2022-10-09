@@ -1,89 +1,108 @@
-import { Color, Icon, IconFilename, IconSize } from '@beercode/common-frontend'
+import {
+  Color,
+  Icon,
+  IconFilename,
+  IconSize,
+  TextElement,
+  Typography,
+} from '@beercode/common-frontend'
 import { ChevronDown, ChevronRight } from '@beercode/common-icons'
-import { cloneDeep, useToggle } from '@beercode/common-utils'
-import { useMemo } from 'react'
+import { useToggle } from '@beercode/common-utils'
+import React, { useContext, useMemo } from 'react'
 
 import {
   Container,
   FolderContainer,
   NodeContainer,
   Row,
+  TreeContainer,
 } from './FolderTree.styles'
-import {
-  File,
-  Folder,
-  FolderTreeProps,
-  Node,
-  NodeItem,
-} from './FolderTree.types'
+import { File, Folder, FolderTreeProps } from './FolderTree.types'
+import { FolderTreeContext, FolderTreeProvider } from './context'
+import { reqSort } from './utils/sortNode'
 
-export const RenderFolder: React.FC<Folder> = ({ name, files }) => {
+const RenderFolder: React.FC<Folder> = ({ name, files, id }) => {
   const [isOpen, toggleOpen] = useToggle(false)
+  const { onRowClick, activeId } = useContext(FolderTreeContext)
+
+  const onClick = (e: React.MouseEvent<HTMLElement>): void => {
+    toggleOpen()
+    onRowClick(id, true)
+    e.stopPropagation()
+  }
 
   return (
     <FolderContainer flexDirection='column'>
-      <Row alignItems='center' onClick={() => toggleOpen()} gap={0.5}>
+      <Row
+        onClick={onClick}
+        alignItems='center'
+        gap={0.5}
+        active={activeId === id}
+      >
         <Icon color={Color.BLUE_300} size={IconSize.SM}>
           {isOpen ? <ChevronDown /> : <ChevronRight />}
         </Icon>
-        {name}
+        <TextElement typography={Typography.BASE}>{name}</TextElement>
       </Row>
-      {isOpen && <RenderNode node={files} />}
+      {isOpen && <RenderTree tree={files} />}
     </FolderContainer>
   )
 }
 
-export const RenderFile: React.FC<File> = ({ name }) => {
+const RenderFile: React.FC<File> = ({ name, id }) => {
+  const { onRowClick, activeId } = useContext(FolderTreeContext)
+
+  const onClick = (e: React.MouseEvent<HTMLElement>): void => {
+    onRowClick(id)
+    e.stopPropagation()
+  }
+
   return (
-    <Row>
-      <IconFilename fullFilename={name} />
+    <Row active={activeId === id} onClick={onClick}>
+      <IconFilename fullFilename={name} typography={Typography.BASE} />
     </Row>
   )
 }
 
-export const RenderNode: React.FC<{ node?: Node }> = ({ node }) => {
+const RenderTree: React.FC<Partial<Pick<FolderTreeProps, 'tree'>>> = ({
+  tree,
+}) => {
+  const { onBlur } = useContext(FolderTreeContext)
+
   return (
-    <NodeContainer flexDirection='column'>
-      {node?.map(item => (
-        <>
-          {item.type === 'folder' && <RenderFolder {...item} />}
-          {item.type === 'file' && <RenderFile {...item} />}
-        </>
+    <TreeContainer flexDirection='column' onClick={onBlur}>
+      {tree?.map(item => (
+        <NodeContainer key={item.id}>
+          {item.type === 'folder' ? (
+            <RenderFolder {...item} />
+          ) : (
+            <RenderFile {...item} />
+          )}
+        </NodeContainer>
       ))}
-    </NodeContainer>
+    </TreeContainer>
   )
 }
 
-export const FolderTree: React.FC<FolderTreeProps> = ({ data }) => {
-  const sortNode = (arr: Node): Node => {
-    return cloneDeep(arr).sort((a: NodeItem, b: NodeItem) => {
-      if (a.type === b.type) return 0
-
-      if (a.type === 'folder') return -1
-
-      if (b.type === 'folder') return 1
-
-      return 0
-    })
-  }
-
-  const reqSort = (arr: Node): Node => {
-    return sortNode(arr).map(nodeItem => {
-      if (nodeItem.type === 'folder' && nodeItem.files)
-        return {
-          ...nodeItem,
-          files: reqSort(nodeItem.files),
-        }
-
-      return nodeItem
-    })
-  }
-
-  const node = useMemo(() => reqSort(data), [data])
+export const FolderTree: React.FC<FolderTreeProps> = ({
+  tree,
+  onFileClick,
+  theme = 'dark',
+  overrideTheme,
+  activeId,
+}) => {
+  const memoizedTree = useMemo(() => reqSort(tree), [tree])
 
   return (
-    <Container flexDirection='column'>
-      <RenderNode node={node} />
-    </Container>
+    <FolderTreeProvider
+      activeId={activeId}
+      onFileClick={onFileClick}
+      theme={theme}
+      overrideTheme={overrideTheme}
+    >
+      <Container flexDirection='column'>
+        <RenderTree tree={memoizedTree} />
+      </Container>
+    </FolderTreeProvider>
   )
 }

@@ -13,8 +13,7 @@ const nextConfig = {
         destination: `/:path*`,
       },
       {
-        //ADD to ide route params /ide/:param1/:param2
-        source: '/ide',
+        source: '/ide/:path*',
         destination: `/ide`,
       },
     ]
