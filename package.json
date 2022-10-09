@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "update": "yarn & yarn upgrade @beercode/common-frontend @beercode/common-utils @beercode/common-icons --latest",
     "install-deps": "yarn && yarn prepare-husky",
     "start": "next dev",
     "build": "next build",
@@ -11,9 +12,16 @@
     "pre-commit": "npx --no-install lint-staged"
   },
   "dependencies": {
-    "@beercode/common-frontend": "^0.7.2",
-    "@beercode/common-utils": "^0.1.3",
+    "@beercode/common-frontend": "^0.12.2",
+    "@beercode/common-icons": "^0.6.1",
+    "@beercode/common-utils": "^0.5.0",
+    "@codemirror/autocomplete": "^6.3.0",
+    "@codemirror/lang-javascript": "^6.1.0",
+    "@codesandbox/sandpack-react": "^1.8.8",
+    "@lezer/highlight": "^1.1.1",
     "@module-federation/nextjs-mf": "^5.6.3",
+    "@uiw/codemirror-themes": "^4.12.3",
+    "@uiw/react-codemirror": "^4.12.3",
     "i18next": "^21.9.2",
     "i18next-browser-languagedetector": "^6.1.5",
     "i18next-http-backend": "^1.4.4",
@@ -21,6 +29,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-i18next": "^11.18.6",
+    "react-jsx-parser": "^1.29.0",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
