@@ -2,39 +2,40 @@ import {
   SandpackCodeEditor,
   SandpackLayout,
   SandpackPreview,
-  SandpackProvider,
+  useSandpack,
 } from '@codesandbox/sandpack-react'
+import { useMemo, useState } from 'react'
 
+import { data } from '../../constants/files'
+import { FolderTree } from '../FolderTree'
 import { SandpackContainer } from './Test.styles'
 
-const code = `export default function App() {return <h1>Hello Sandpack</h1>}`
-
 export const Test: React.FC = () => {
+  const { sandpack } = useSandpack()
+  const activeId = useMemo(() => sandpack.activeFile, [sandpack.activeFile])
+  const [tree] = useState(data)
+
+  const onFileClick = (id: string): void => {
+    sandpack.openFile(id)
+  }
+
   return (
     <SandpackContainer>
-      <SandpackProvider
-        template='react'
-        theme='dark'
-        files={{
-          '/App.js': code,
-          '/button.js': code,
-          '/a.js': code,
-        }}
-        options={{
-          visibleFiles: ['/App.js', '/index.js', '/a.js'],
-          activeFile: '/index.js',
-        }}
-      >
-        <SandpackLayout>
-          <SandpackCodeEditor
-            closableTabs
-            showLineNumbers
-            showInlineErrors
-            wrapContent
-          />
-          <SandpackPreview />
-        </SandpackLayout>
-      </SandpackProvider>
+      <SandpackLayout>
+        <FolderTree
+          tree={tree}
+          onFileClick={onFileClick}
+          theme='dark'
+          activeId={activeId}
+        />
+        <SandpackCodeEditor
+          closableTabs
+          showLineNumbers
+          showInlineErrors
+          wrapContent
+        />
+        <SandpackPreview />
+      </SandpackLayout>
     </SandpackContainer>
   )
 }
