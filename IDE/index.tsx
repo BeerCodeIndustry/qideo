@@ -17,23 +17,27 @@ export const IDE: NextPage = () => {
         files={{
           'App.js': code,
           'a.js': code,
-          'folder/b.js': code,
           'folder/a.js': code,
-          'folder/c.js': code,
-          'folder/d.js': code,
+          'folder/b.js': code,
           'folder/A/a.js': code,
           'folder/A/b.js': code,
+          'folder/A/B/a.js': code,
+          'folder/A/B/b.js': code,
+          'folder/A/B/C/a.js': code,
+          'folder/A/B/C/b.js': code,
         }}
         options={{
           visibleFiles: [
             'App.js',
             'a.js',
-            'folder/b.js',
             'folder/a.js',
-            'folder/c.js',
-            'folder/d.js',
+            'folder/b.js',
             'folder/A/a.js',
             'folder/A/b.js',
+            'folder/A/B/a.js',
+            'folder/A/B/b.js',
+            'folder/A/B/C/a.js',
+            'folder/A/B/C/b.js',
           ],
           activeFile: 'a.js',
         }}

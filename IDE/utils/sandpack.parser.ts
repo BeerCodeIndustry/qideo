@@ -29,8 +29,8 @@ export const genSemiTree = (filePath: string): Node => {
   )
 }
 
-export const findFolder = (tree: Tree, name: string): Folder | undefined => {
-  return tree.find(node => node.name === name && node.type === 'folder') as
+export const findFolder = (name: string, tree?: Tree): Folder | undefined => {
+  return tree?.find(node => node.name === name && node.type === 'folder') as
     | Folder
     | undefined
 }
@@ -39,26 +39,25 @@ export const parse = (tree: Tree, filepath: string): Tree => {
   const semiPaths = getSemiPaths(filepath)
   let deep = 0
 
-  const changeSemi = (_tree?: Tree): void => {
-    if (isLastIndex(semiPaths, deep) || !_tree?.length) {
+  const changeSemiTreeFiles = (_tree?: Tree): void => {
+    const folder = findFolder(semiPaths[deep], _tree)
+
+    if (isLastIndex(semiPaths, deep) || !_tree?.length || !folder) {
       _tree?.push(genSemiTree(getPathByDeep(semiPaths, deep)))
     } else {
-      const folder = findFolder(_tree, semiPaths[deep])
-
-      if (folder) {
-        deep += 1
-        changeSemi(folder.files)
-      } else {
-        _tree.push(genSemiTree(getPathByDeep(semiPaths, deep)))
-      }
+      deep += 1
+      changeSemiTreeFiles(folder.files)
     }
   }
 
-  changeSemi(tree)
+  changeSemiTreeFiles(tree)
 
   return tree
 }
 
 export const genTree = (files: string[]): Tree => {
-  return files.reduce((acc: Tree, vf) => [...parse(acc, vf)], [])
+  return files.reduce(
+    (acc: Tree, filepath: string) => [...parse(acc, filepath)],
+    [],
+  )
 }
