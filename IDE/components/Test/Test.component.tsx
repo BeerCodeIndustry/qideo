@@ -5,12 +5,14 @@ import {
   SandpackPreview,
   useSandpack,
 } from '@codesandbox/sandpack-react'
-import { useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 
 import { genTree } from '../../utils/sandpack.parser'
+import { Prettier } from '../Prettier'
 import { SandpackContainer } from './Test.styles'
 
 export const Test: React.FC = () => {
+  const codemirrorInstance = useRef()
   const { sandpack } = useSandpack()
   const activeId = useMemo(() => sandpack.activeFile, [sandpack.activeFile])
   const visibleFiles = useMemo(
@@ -34,6 +36,7 @@ export const Test: React.FC = () => {
           activeId={activeId}
         />
         <SandpackCodeEditor showLineNumbers showInlineErrors wrapContent />
+        <Prettier codemirrorInstance={codemirrorInstance} />
         <SandpackPreview />
       </SandpackLayout>
     </SandpackContainer>
