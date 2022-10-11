@@ -14,7 +14,8 @@
   "dependencies": {
     "@beercode/common-frontend": "^0.12.2",
     "@beercode/common-icons": "^0.6.1",
-    "@beercode/common-utils": "^0.5.0",
+    "@beercode/common-utils": "^0.6.1",
+    "@beercode/react-folder-tree": "^0.1.5",
     "@codemirror/autocomplete": "^6.3.0",
     "@codemirror/lang-javascript": "^6.1.0",
     "@codesandbox/sandpack-react": "^1.8.8",

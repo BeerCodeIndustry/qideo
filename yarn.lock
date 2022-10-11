@@ -1273,6 +1273,31 @@
     rollup "^2.79.1"
     ts-node "^10.9.1"
 
+"@beercode/common-utils@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@beercode/common-utils/-/common-utils-0.6.1.tgz#2002ed649e0c7e0a5117839f929e6e8a508fbc6c"
+  integrity sha512-LhsuNdohfgyMb5RjCrHiedPdCYYvk8z1J17vnwBieiURkduD46aeajxwA64TSQgzbYwUmc9uipJpbTcutNQecw==
+  dependencies:
+    lodash.clonedeep "^4.5.0"
+    next "12.3.1"
+    react "18.2.0"
+    react-dom "18.2.0"
+    rollup "^2.79.1"
+    ts-node "^10.9.1"
+
+"@beercode/react-folder-tree@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@beercode/react-folder-tree/-/react-folder-tree-0.1.5.tgz#f9b16bc166d0cd7e9822e369816c3083dfd6eae7"
+  integrity sha512-arojoKKYrEsF3leRzh9DqPx6vDmHDICRSttkV9I+Rw8gBE29JzX8ZWOWaZtz4Lj0Fjgte/4gTirutIOQ2lNEcw==
+  dependencies:
+    "@beercode/common-frontend" "^0.12.2"
+    "@beercode/common-icons" "^0.6.1"
+    "@beercode/common-utils" "^0.5.0"
+    next "12.3.1"
+    react "18.2.0"
+    react-dom "18.2.0"
+    styled-components "^5.3.6"
+
 "@code-hike/classer@^0.0.0-aa6efee":
   version "0.0.0-e48fa74"
   resolved "https://registry.yarnpkg.com/@code-hike/classer/-/classer-0.0.0-e48fa74.tgz#17243ca84d5af303c51e62b378e8db65e01cd3f4"

@@ -16,12 +16,25 @@ export const IDE: NextPage = () => {
         theme={theme}
         files={{
           'App.js': code,
-          'button.js': code,
           'a.js': code,
           'folder/b.js': code,
+          'folder/a.js': code,
+          'folder/c.js': code,
+          'folder/d.js': code,
+          'folder/A/a.js': code,
+          'folder/A/b.js': code,
         }}
         options={{
-          visibleFiles: ['App.js', 'a.js', 'folder/b.js'],
+          visibleFiles: [
+            'App.js',
+            'a.js',
+            'folder/b.js',
+            'folder/a.js',
+            'folder/c.js',
+            'folder/d.js',
+            'folder/A/a.js',
+            'folder/A/b.js',
+          ],
           activeFile: 'a.js',
         }}
       >

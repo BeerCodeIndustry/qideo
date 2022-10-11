@@ -1,19 +1,24 @@
+import { FolderTree } from '@beercode/react-folder-tree'
 import {
   SandpackCodeEditor,
   SandpackLayout,
   SandpackPreview,
   useSandpack,
 } from '@codesandbox/sandpack-react'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 
-import { data } from '../../constants/files'
-import { FolderTree } from '../FolderTree'
+import { genTree } from '../../utils/sandpack.parser'
 import { SandpackContainer } from './Test.styles'
 
 export const Test: React.FC = () => {
   const { sandpack } = useSandpack()
   const activeId = useMemo(() => sandpack.activeFile, [sandpack.activeFile])
-  const [tree] = useState(data)
+  const visibleFiles = useMemo(
+    () => sandpack.visibleFiles,
+    [sandpack.visibleFiles],
+  )
+
+  const tree = useMemo(() => genTree(visibleFiles), [visibleFiles])
 
   const onFileClick = (id: string): void => {
     sandpack.openFile(id)
@@ -28,12 +33,7 @@ export const Test: React.FC = () => {
           theme='dark'
           activeId={activeId}
         />
-        <SandpackCodeEditor
-          closableTabs
-          showLineNumbers
-          showInlineErrors
-          wrapContent
-        />
+        <SandpackCodeEditor showLineNumbers showInlineErrors wrapContent />
         <SandpackPreview />
       </SandpackLayout>
     </SandpackContainer>
