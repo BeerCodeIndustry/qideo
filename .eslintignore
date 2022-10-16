@@ -3,4 +3,4 @@
 /dist
 lint-staged.config.js
 next.config.js
-.eslintrc
+.eslintrc.js
