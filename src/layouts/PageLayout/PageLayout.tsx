@@ -1,7 +1,7 @@
 import { Footer } from '../../components/Footer'
 import { LayoutProps } from '../Layout.types'
 import { Header } from '../../components/Header'
-import { PageLayout } from './PageLayout.styled'
+import { PageLayout } from './PageLayout.styles'
 
 export const Page: React.FC<LayoutProps> = ({ children }) => {
   return (

@@ -7,7 +7,7 @@ import {
   LinksSections,
   Container,
   FooterLogoSection,
-} from './Footer.styled'
+} from './Footer.styles'
 
 export const Footer: React.FC = () => {
   return (
