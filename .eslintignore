@@ -1,4 +1,3 @@
-.eslitrc
 /node_modules
 /dist
 lint-staged.config.js

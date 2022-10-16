@@ -1,7 +1,16 @@
 module.exports = {
-  root: true,
-  plugins: ['@typescript-eslint', 'prettier', 'import'],
-  extends: [
+  "root": true,
+  "plugins": ['@typescript-eslint', 'prettier', 'import'],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [["@", "."]],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "extends": [
+    'next/core-web-vitals',
     'airbnb',
     'airbnb-typescript',
     'airbnb/hooks',
@@ -13,13 +22,17 @@ module.exports = {
     'plugin:import/typescript',
     'prettier',
     'prettier/prettier',
-    'next/core-web-vitals',
   ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: './tsconfig.json',
-    tsconfigRootDir: __dirname,
-  },
+  "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": ['*.ts', '*.tsx'],
+      "parserOptions": {
+        "project": './tsconfig.json',
+        "tsconfigRootDir": __dirname
+      },
+    },
+  ],
   rules: {
     '@typescript-eslint/explicit-function-return-type': [
       'error',
@@ -36,6 +49,7 @@ module.exports = {
         exceptAfterSingleLine: true,
       },
     ],
+    "react/react-in-jsx-scope": "off",
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/consistent-type-definitions': 'error',
