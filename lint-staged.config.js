@@ -1,9 +1,9 @@
 module.exports = {
-  '**/*.js': 'eslint --config .eslintrc.json --fix',
+  '**/*.js': 'eslint --config .eslintrc.js --fix',
   '**/*.json': 'prettier --write',
   '**/*.md': 'prettier --write',
   '**/*.ts?(x)': [
     () => 'tsc -p tsconfig.json --noEmit',
-    'eslint --config .eslintrc.json --fix',
+    'eslint --config .eslintrc.js --fix',
   ],
 }
