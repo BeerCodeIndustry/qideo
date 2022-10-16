@@ -6,7 +6,6 @@ import {
   ContainerSection,
   LinksSections,
   Container,
-  FooterLogoSection,
 } from './Footer.styles'
 
 export const Footer: React.FC = () => {
@@ -14,13 +13,13 @@ export const Footer: React.FC = () => {
     <>
       <Container>
         <ContainerSection>
-          <FooterLogoSection>
+          <div>
             <a>Logo</a>
             <AllRightsFooter>
               A good design is not only aesthetically pleasing, but also
               functional. It should be able to solve the problem
             </AllRightsFooter>
-          </FooterLogoSection>
+          </div>
           <div>
             <p>Sections</p>
             <ContainerSections>

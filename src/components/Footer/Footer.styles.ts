@@ -41,7 +41,3 @@ export const LinksSections = styled.div`
     margin: 0;
   }
 `
-export const FooterLogoSection = styled.div`
-  display: flex;
-  flex-direction: column;
-`
