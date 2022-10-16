@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { useLocale } from '../hooks/useLocale'
 
 import { Locale } from '../types/localization'
-import { PageLayout } from '../layouts/PageLayout/PageLayout.styled'
+import { Page } from '../layouts/PageLayout'
 
 const Home: NextPage = () => {
   const { changeLocale } = useLocale()
@@ -17,10 +17,10 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <PageLayout>
+      <Page>
         <a onClick={() => changeLocale(Locale.EN)}>{Locale.EN}</a>
         <a onClick={() => changeLocale(Locale.RU)}>{Locale.RU}</a>
-      </PageLayout>
+      </Page>
     </>
   )
 }
