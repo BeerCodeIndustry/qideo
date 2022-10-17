@@ -1,11 +1,20 @@
-import { Color, TextElement, Typography } from '@beercode/common-frontend'
+import {
+  Color,
+  ModalSize,
+  Opacity,
+  TextElement,
+  Typography,
+} from '@beercode/common-frontend'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
+import { useDispatch } from 'react-redux'
+import { addModal } from 'src/redux/reducers/common.reducer'
 
 import { HeaderContainer } from './Header.styles'
 
 export const Header: React.FC = () => {
   const { t } = useTranslation()
+  const dispatch = useDispatch()
 
   return (
     <HeaderContainer>
@@ -43,6 +52,17 @@ export const Header: React.FC = () => {
         typography={Typography.XL_2}
         hover={Color.GRAY_500}
         cursor
+        onClick={() =>
+          dispatch(
+            addModal({
+              size: ModalSize.MEDIUM,
+              modalColor: Color.BLUE_500,
+              backgroundColor: [Color.WHITE, Opacity._30_],
+              crossColor: Color.WHITE,
+              children: <div>{t('common:login')}</div>,
+            }),
+          )
+        }
       >
         {t('common:login')}
       </TextElement>
@@ -51,6 +71,17 @@ export const Header: React.FC = () => {
         typography={Typography.XL_2}
         hover={Color.GRAY_500}
         cursor
+        onClick={() =>
+          dispatch(
+            addModal({
+              size: ModalSize.MEDIUM,
+              modalColor: Color.BLUE_500,
+              backgroundColor: [Color.WHITE, Opacity._30_],
+              crossColor: Color.WHITE,
+              children: <div>{t('common:signUp')}</div>,
+            }),
+          )
+        }
       >
         {t('common:signUp')}
       </TextElement>

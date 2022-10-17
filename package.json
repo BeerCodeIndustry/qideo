@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "update": "yarn & yarn upgrade @beercode/common-frontend @beercode/common-utils @beercode/common-icons --latest",
+    "update": "yarn upgrade @beercode/common-frontend @beercode/common-utils @beercode/common-icons --latest",
     "install-deps": "yarn && yarn prepare-husky",
     "start": "next dev",
     "build": "next build",
@@ -12,7 +12,7 @@
     "pre-commit": "npx --no-install lint-staged"
   },
   "dependencies": {
-    "@beercode/common-frontend": "^0.15.0",
+    "@beercode/common-frontend": "^0.16.0",
     "@beercode/common-icons": "^0.6.1",
     "@beercode/common-utils": "^0.6.1",
     "@beercode/react-folder-tree": "^0.1.5",
