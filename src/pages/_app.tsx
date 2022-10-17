@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { I18nextProvider } from 'react-i18next'
 import { Provider } from 'react-redux'
 
+import { QideoProvider } from '../components/QideoProvider'
 import { store } from '../redux'
 import { i18nConfig } from '../utils/i18n'
 
@@ -20,7 +21,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <I18nextProvider i18n={i18n}>
-        <Component {...pageProps} />
+        <QideoProvider>
+          <Component {...pageProps} />
+        </QideoProvider>
       </I18nextProvider>
     </Provider>
   )

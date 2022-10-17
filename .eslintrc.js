@@ -34,6 +34,7 @@ module.exports = {
         allowTypedFunctionExpressions: true,
       },
     ],
+    'react-redux/useSelector-prefer-selectors': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/lines-between-class-members': [
       'error',
