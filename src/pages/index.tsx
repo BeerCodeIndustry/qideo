@@ -2,9 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import { useLocale } from '../hooks/useLocale'
-
+import { Page } from '../layouts/Page'
 import { Locale } from '../types/localization'
-import { Page } from '../layouts/PageLayout'
 
 const Home: NextPage = () => {
   const { changeLocale } = useLocale()
