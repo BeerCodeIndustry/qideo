@@ -6,7 +6,6 @@ import { I18nextProvider } from 'react-i18next'
 import { Provider } from 'react-redux'
 
 import { store } from '../redux'
-import '../styles/globals.css'
 import { i18nConfig } from '../utils/i18n'
 
 i18nConfig().catch(() => {})
