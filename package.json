@@ -24,6 +24,7 @@
     "@reduxjs/toolkit": "^1.8.6",
     "@uiw/codemirror-themes": "^4.12.3",
     "@uiw/react-codemirror": "^4.12.3",
+    "formik": "^2.2.9",
     "i18next": "^21.9.2",
     "i18next-browser-languagedetector": "^6.1.5",
     "i18next-http-backend": "^1.4.4",
