@@ -3,7 +3,9 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { I18nextProvider } from 'react-i18next'
+import { Provider } from 'react-redux'
 
+import { store } from '../redux'
 import { i18nConfig } from '../utils/i18n'
 
 i18nConfig().catch(() => {})
@@ -16,9 +18,11 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   }, [router.locale])
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <Component {...pageProps} />
-    </I18nextProvider>
+    <Provider store={store}>
+      <I18nextProvider i18n={i18n}>
+        <Component {...pageProps} />
+      </I18nextProvider>
+    </Provider>
   )
 }
 

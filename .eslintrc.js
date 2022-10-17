@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  plugins: ['@typescript-eslint', 'prettier', 'import'],
+  plugins: ['@typescript-eslint', 'prettier', 'import', 'react-redux'],
   extends: [
     'next/core-web-vitals',
     'airbnb',
@@ -14,6 +14,7 @@ module.exports = {
     'plugin:import/typescript',
     'prettier',
     'prettier/prettier',
+    'plugin:react-redux/recommended',
   ],
   parser: '@typescript-eslint/parser',
   overrides: [
@@ -42,6 +43,7 @@ module.exports = {
       },
     ],
     'react/react-in-jsx-scope': 'off',
+    'no-param-reassign': 'off',
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/consistent-type-definitions': 'error',
