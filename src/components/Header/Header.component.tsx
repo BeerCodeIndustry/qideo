@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { addModal } from 'src/redux/reducers/common.reducer'
 
+import { Login } from '../Login'
 import { HeaderContainer } from './Header.styles'
 
 export const Header: React.FC = () => {
@@ -59,7 +60,7 @@ export const Header: React.FC = () => {
               modalColor: Color.BLUE_500,
               backgroundColor: [Color.WHITE, Opacity._30_],
               crossColor: Color.WHITE,
-              children: <div>{t('common:login')}</div>,
+              children: <Login />,
             }),
           )
         }
