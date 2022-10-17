@@ -1,7 +1,7 @@
 import { Color, TextElement, Typography } from '@beercode/common-frontend'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
-import { LangSelector } from '../LangSelector'
+import { LngSelector } from '../LngSelector'
 
 import { HeaderContainer } from './Header.styles'
 
@@ -55,7 +55,7 @@ export const Header: React.FC = () => {
       >
         {t('common:signUp')}
       </TextElement>
-      <LangSelector />
+      <LngSelector />
     </HeaderContainer>
   )
 }
