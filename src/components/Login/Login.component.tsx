@@ -9,7 +9,7 @@ export const Login: React.FC = () => {
 
   const formik = useFormik<LoginParams>({
     initialValues: {
-      email: '',
+      username: '',
       password: '',
     },
     onSubmit: () => {},
@@ -18,14 +18,12 @@ export const Login: React.FC = () => {
   return (
     <LoginContainer>
       <Form>
-        <label htmlFor='email'>
-          {t('common:email')}/{t('common:username')}
-        </label>
+        <label htmlFor='username'>{t('common:username')}</label>
         <input
-          id='email'
-          name='email'
+          id='username'
+          name='username'
           onChange={formik.handleChange}
-          value={formik.values.email}
+          value={formik.values.username}
         />
         <label htmlFor='password'>{t('common:password')}</label>
         <input
