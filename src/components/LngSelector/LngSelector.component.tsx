@@ -5,18 +5,13 @@ import { useRouter } from 'next/router'
 import { LngOption } from './LngSelector.types'
 
 export const LngSelector: React.FC = () => {
+  const locales: Locale[] = Object.values(Locale)
   const router = useRouter()
   const { changeLocale } = useLocale()
-  const lngOptions: LngOption[] = [
-    {
-      value: Locale.EN,
-      label: Locale.EN,
-    },
-    {
-      value: Locale.RU,
-      label: Locale.RU,
-    },
-  ]
+  const lngOptions = locales.map<LngOption>(language => ({
+    value: language,
+    label: language.toUpperCase(),
+  }))
   const onChange = (obj: LngOption): void => {
     changeLocale(obj.value)
   }
@@ -24,7 +19,7 @@ export const LngSelector: React.FC = () => {
   return (
     <Select
       options={lngOptions}
-      defaultValue={lngOptions.filter(lng => lng.value === router.locale)}
+      defaultValue={lngOptions.find(lng => lng.value === router.locale)}
       onChange={option => onChange(option as LngOption)}
     />
   )

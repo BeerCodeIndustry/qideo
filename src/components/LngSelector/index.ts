@@ -1,1 +1,1 @@
-export { LngSelector } from './LngSelector'
+export { LngSelector } from './LngSelector.component'

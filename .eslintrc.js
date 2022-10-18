@@ -71,7 +71,7 @@ module.exports = {
     'import/no-cycle': 'off',
     'import/prefer-default-export': 'off',
     'no-await-in-loop': 'off',
-    'no-console': 'warn',
+    'no-console': 'error',
     'no-nested-ternary': 'off',
     'no-restricted-syntax': 'off',
     '@typescript-eslint/no-unsafe-assignment': 'off',
