@@ -1,38 +1,36 @@
-import { useFormik } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useTranslation } from 'react-i18next'
 
-import { Form, LoginContainer } from './Login.styles'
+import { FormContainer } from './Login.styles'
 import { LoginParams } from './Login.types'
+import { validate } from '../../constants/Validate'
+import { ErrorMessageStyle, ButtonSignUp } from '../SignUp'
 
 export const Login: React.FC = () => {
   const { t } = useTranslation()
 
-  const formik = useFormik<LoginParams>({
-    initialValues: {
-      username: '',
-      password: '',
-    },
-    onSubmit: () => {},
-  })
+  const initialValues: LoginParams = {
+    username: '',
+    password: '',
+  }
 
   return (
-    <LoginContainer>
+    <Formik
+      initialValues={initialValues}
+      validate={validate}
+      onSubmit={() => {}}
+    >
       <Form>
-        <label htmlFor='username'>{t('common:username')}</label>
-        <input
-          id='username'
-          name='username'
-          onChange={formik.handleChange}
-          value={formik.values.username}
-        />
-        <label htmlFor='password'>{t('common:password')}</label>
-        <input
-          id='password'
-          name='password'
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
+        <FormContainer flexDirection='column'>
+          <label htmlFor='username'>{t('common:username')}</label>
+          <Field type='text' id='username' name='username' />
+          <ErrorMessage name='username' component={ErrorMessageStyle} />
+          <label htmlFor='password'>{t('common:password')}</label>
+          <Field type='password' id='password' name='password' />
+          <ErrorMessage name='password' component={ErrorMessageStyle} />
+          <ButtonSignUp type='submit'>Login</ButtonSignUp>
+        </FormContainer>
       </Form>
-    </LoginContainer>
+    </Formik>
   )
 }
