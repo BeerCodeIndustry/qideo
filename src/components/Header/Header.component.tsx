@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { addModal } from 'src/redux/reducers/common.reducer'
-
+import { LngSelector } from '../LngSelector'
 import { Login } from '../Login'
 import { HeaderContainer } from './Header.styles'
 
@@ -86,6 +86,7 @@ export const Header: React.FC = () => {
       >
         {t('common:signUp')}
       </TextElement>
+      <LngSelector />
     </HeaderContainer>
   )
 }
