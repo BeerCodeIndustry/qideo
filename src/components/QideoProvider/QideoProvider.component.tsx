@@ -5,15 +5,15 @@ import { themes } from 'src/constants/theme'
 import { StateType } from 'src/redux'
 import { ThemeProvider } from 'styled-components'
 
-import { ThemeType } from '../../types/theme'
 import { QideoProviderProps } from './QideoProvider.types'
 
 export const QideoProvider: React.FC<QideoProviderProps> = ({ children }) => {
   const modal = useSelector((state: StateType) => state.common.modal)
+  const theme = useSelector((state: StateType) => state.common.theme)
   const dispatch = useDispatch()
 
   return (
-    <ThemeProvider theme={themes[ThemeType.DARK]}>
+    <ThemeProvider theme={themes[theme]}>
       {modal && <Modal onClose={() => dispatch(closeModal())} {...modal} />}
       {children}
     </ThemeProvider>
