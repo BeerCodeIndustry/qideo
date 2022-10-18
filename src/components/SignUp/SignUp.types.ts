@@ -1,4 +1,4 @@
-export interface LoginParams {
+export interface SignUpParams {
   username: string
   email: string
   password: string
