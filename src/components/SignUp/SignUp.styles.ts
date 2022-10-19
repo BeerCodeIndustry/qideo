@@ -1,7 +1,5 @@
-import { Flexbox, colors } from '@beercode/common-frontend'
+import { colors } from '@beercode/common-frontend'
 import styled from 'styled-components'
-
-export const FormContainer = styled(Flexbox)``
 
 export const ButtonSignUp = styled.button`
   padding: 0.5rem;

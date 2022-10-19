@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useTranslation } from 'react-i18next'
 
-import { FormContainer } from './Login.styles'
+import { Flexbox } from '@beercode/common-frontend'
 import { LoginParams } from './Login.types'
 import { validationSchema } from '../../utils/validate'
 import { ErrorMessageStyle, ButtonSignUp } from '../SignUp'
@@ -21,7 +21,7 @@ export const Login: React.FC = () => {
       onSubmit={() => {}}
     >
       <Form>
-        <FormContainer flexDirection='column'>
+        <Flexbox flexDirection='column'>
           <label htmlFor='username'>{t('common:username')}</label>
           <Field type='text' id='username' name='username' />
           <ErrorMessage name='username' component={ErrorMessageStyle} />
@@ -29,7 +29,7 @@ export const Login: React.FC = () => {
           <Field type='password' id='password' name='password' />
           <ErrorMessage name='password' component={ErrorMessageStyle} />
           <ButtonSignUp type='submit'>{t('common:login')}</ButtonSignUp>
-        </FormContainer>
+        </Flexbox>
       </Form>
     </Formik>
   )
