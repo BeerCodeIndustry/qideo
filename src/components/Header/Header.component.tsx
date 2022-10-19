@@ -80,7 +80,7 @@ export const Header: React.FC = () => {
           dispatch(
             addModal({
               size: ModalSize.MEDIUM,
-              modalColor: Color.BLUE_500,
+              modalColor: Color.ORANGE_300,
               backgroundColor: [Color.WHITE, Opacity._30_],
               crossColor: Color.WHITE,
               children: <SignUp />,

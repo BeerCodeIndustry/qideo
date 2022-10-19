@@ -1,55 +1,44 @@
-import { useFormik } from 'formik'
+import { Form, Formik, Field, ErrorMessage } from 'formik'
 import { useTranslation } from 'react-i18next'
+import { Flexbox } from '@beercode/common-frontend'
 
-import { Form } from './SignUp.styles'
+import { ButtonSignUp, ErrorMessageStyle } from './SignUp.styles'
 import { SignUpParams } from './SignUp.types'
+import { validationSchema } from '../../utils/validate'
 
 export const SignUp: React.FC = () => {
   const { t } = useTranslation()
-  const formik = useFormik<SignUpParams>({
-    initialValues: {
-      username: '',
-      email: '',
-      password: '',
-      repeatPassword: '',
-    },
-    onSubmit: () => {},
-  })
+
+  const initialValues: SignUpParams = {
+    username: '',
+    email: '',
+    password: '',
+    repeatPassword: '',
+  }
 
   return (
-    <Form>
-      <label htmlFor='username'>{t('common:username')}</label>
-      <input
-        id='username'
-        name='username'
-        type='username'
-        onChange={formik.handleChange}
-        value={formik.values.username}
-      />
-      <label htmlFor='email'>{t('common:email')}</label>
-      <input
-        id='email'
-        name='email'
-        type='email'
-        onChange={formik.handleChange}
-        value={formik.values.email}
-      />
-      <label htmlFor='password'>{t('common:password')}</label>
-      <input
-        id='password'
-        name='password'
-        type='password'
-        onChange={formik.handleChange}
-        value={formik.values.password}
-      />
-      <label htmlFor='repeatPassword'>{t('common:repeatPassword')}</label>
-      <input
-        id='repeatPassword'
-        name='repeatPassword'
-        type='password'
-        onChange={formik.handleChange}
-        value={formik.values.repeatPassword}
-      />
-    </Form>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={() => {}}
+    >
+      <Form>
+        <Flexbox flexDirection='column'>
+          <label htmlFor='username'>{t('common:username')}</label>
+          <Field type='text' id='username' name='username' />
+          <ErrorMessage name='username' component={ErrorMessageStyle} />
+          <label htmlFor='email'>{t('common:email')}</label>
+          <Field type='email' id='email' name='email' />
+          <ErrorMessage name='email' component={ErrorMessageStyle} />
+          <label htmlFor='password'>{t('common:password')}</label>
+          <Field type='password' id='password' name='password' />
+          <ErrorMessage name='password' component={ErrorMessageStyle} />
+          <label htmlFor='repeatPassword'>{t('common:repeatPassword')}</label>
+          <Field id='repeatPassword' name='repeatPassword' type='password' />
+          <ErrorMessage name='repeatPassword' component={ErrorMessageStyle} />
+          <ButtonSignUp type='submit'>{t('common:signUp')}</ButtonSignUp>
+        </Flexbox>
+      </Form>
+    </Formik>
   )
 }
