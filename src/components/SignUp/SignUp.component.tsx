@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { FormContainer, ButtonSignUp, ErrorMessageStyle } from './SignUp.styles'
 import { SignUpParams } from './SignUp.types'
-import { validate } from '../../constants/Validate'
+import { validationSchema } from '../../utils/validate'
 
 export const SignUp: React.FC = () => {
   const { t } = useTranslation()
@@ -18,7 +18,7 @@ export const SignUp: React.FC = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validate={validate}
+      validationSchema={validationSchema}
       onSubmit={() => {}}
     >
       <Form>
