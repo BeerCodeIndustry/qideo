@@ -7,7 +7,7 @@ export const ButtonSignUp = styled.button`
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: 0;
-  width: 10%;
+  width: 20%;
   margin-top: 1rem;
 `
 export const ErrorMessageStyle = styled.span`

@@ -35,7 +35,7 @@ export const SignUp: React.FC = () => {
           <label htmlFor='repeatPassword'>{t('common:repeatPassword')}</label>
           <Field id='repeatPassword' name='repeatPassword' type='password' />
           <ErrorMessage name='repeatPassword' component={ErrorMessageStyle} />
-          <ButtonSignUp type='submit'>Sign Up</ButtonSignUp>
+          <ButtonSignUp type='submit'>{t('common:signUp')}</ButtonSignUp>
         </FormContainer>
       </Form>
     </Formik>
