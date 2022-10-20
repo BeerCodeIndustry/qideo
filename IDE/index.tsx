@@ -39,6 +39,7 @@ export const IDE: NextPage = () => {
             'folder/A/B/C/a.js',
             'folder/A/B/C/b.js',
           ],
+          bundlerURL: 'http://localhost:3000/index.html',
           activeFile: 'a.js',
         }}
       >
