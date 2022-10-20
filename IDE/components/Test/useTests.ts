@@ -34,41 +34,40 @@ export const useTests = () => {
 
   const initTests = useCallback(
     (tests: Tests) => {
-      setTests(tests)
       iframe.current =
         document.getElementsByTagName('iframe')[0]?.contentWindow?.document
+      const test = tests[testingStage]
 
-      const trigger = new Function(
-        ...tests[testingStage].triggerArgs,
-        tests[testingStage].trigger,
-      )
+      setTests(tests)
+
+      const trigger = new Function(...test.triggerArgs, test.trigger)
 
       try {
         trigger(
-          ...tests[testingStage].triggerArgs.map((id: string) => {
+          ...test.triggerArgs.map((id: string) => {
             return iframe.current?.getElementById(id)
           }),
         )
+
+        setTestingState(
+          test.state.reduce(
+            (acc: Record<string, unknown>, stateInstance: State) => {
+              return {
+                ...acc,
+                [stateInstance.name]: iframe.current?.getElementById(
+                  stateInstance.id,
+                )?.[stateInstance.valuePath as keyof HTMLElement],
+              }
+            },
+            {},
+          ),
+        )
+
+        setTimeout(() => setChecking(true), 0)
       } catch (e) {
         console.warn(e)
         notPassed()
       }
-
-      setTestingState(
-        tests[testingStage].state.reduce(
-          (acc: Record<string, unknown>, stateInstance: State) => {
-            return {
-              ...acc,
-              [stateInstance.name]: iframe.current?.getElementById(
-                stateInstance.id,
-              )?.[stateInstance.valuePath as keyof HTMLElement],
-            }
-          },
-          {},
-        ),
-      )
-
-      setTimeout(() => setChecking(true), 0)
     },
     [testingStage],
   )
@@ -78,16 +77,14 @@ export const useTests = () => {
       return
     }
 
-    const checker = new Function(
-      ...tests[testingStage].checkerArgs,
-      tests[testingStage].checker,
-    )
+    const test = tests[testingStage]
+
+    const checker = new Function(...test.checkerArgs, test.checker)
 
     const result = checker(
-      ...tests[testingStage].checkerArgs.map((name: string) => {
-        const state = tests[testingStage].state.find(
-          (s: any) => s.name === name,
-        )
+      ...test.checkerArgs.map((name: string) => {
+        const state = test.state.find((state: State) => state.name === name)
+
         return {
           prev: testingState[name as keyof typeof testingState],
           next: iframe.current?.getElementById(state?.id || '')?.[

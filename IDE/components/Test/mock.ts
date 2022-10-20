@@ -4,7 +4,6 @@ export const testResponse = [
     increment.click();
   `,
     checker: `
-      console.log('asd', counter.prev, counter.next - 1)
       return counter.prev == counter.next - 1
     `,
     triggerArgs: ['increment'],
