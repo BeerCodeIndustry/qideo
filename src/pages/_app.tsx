@@ -1,32 +1,19 @@
-import i18n from 'i18next'
+import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { I18nextProvider } from 'react-i18next'
 import { Provider } from 'react-redux'
 
+import NextI18nextConfig from '../../next-i18next.config'
 import { QideoProvider } from '../components/QideoProvider'
 import { store } from '../redux'
-import { i18nConfig } from '../utils/i18n'
 
-i18nConfig().catch(() => {})
-
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
-  const router = useRouter()
-
-  useEffect(() => {
-    i18n.changeLanguage(router.locale).catch(() => {})
-  }, [router.locale])
-
+const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <Provider store={store}>
-      <I18nextProvider i18n={i18n}>
-        <QideoProvider>
-          <Component {...pageProps} />
-        </QideoProvider>
-      </I18nextProvider>
+      <QideoProvider>
+        <Component {...pageProps} />
+      </QideoProvider>
     </Provider>
   )
 }
 
-export default MyApp
+export default appWithTranslation(App, NextI18nextConfig)
