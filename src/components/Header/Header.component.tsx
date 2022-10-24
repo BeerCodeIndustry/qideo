@@ -1,7 +1,9 @@
 import {
   Color,
+  Flexbox,
   ModalSize,
   Opacity,
+  TextElement,
   Typography,
 } from '@beercode/common-frontend'
 import Link from 'next/link'
@@ -13,7 +15,7 @@ import { LngSelector } from '../LngSelector'
 import { Login } from '../Login'
 import { SignUp } from '../SignUp'
 import { ThemeSwitcher } from '../ThemeSwitcher'
-import { Box, Container, HeaderContainer } from './Header.styles'
+import { HeaderContainer } from './Header.styles'
 
 export const Header: React.FC = () => {
   const { t } = useTranslation()
@@ -21,31 +23,31 @@ export const Header: React.FC = () => {
 
   return (
     <HeaderContainer>
-      <Container>
-        <Box color={Color.BLACK} typography={Typography.XL_4_BOLD}>
+      <Flexbox alignItems='center' gap={3}>
+        <TextElement color={Color.BLACK} typography={Typography.XL_4_BOLD}>
           Qideo
-        </Box>
-        <Box
+        </TextElement>
+        <TextElement
           color={Color.BLACK}
           typography={Typography.XL_2}
           hover={Color.GRAY_500}
           hasCursor
         >
           {t('page.practicum')}
-        </Box>
+        </TextElement>
         <Link href='/ide'>
-          <Box
+          <TextElement
             color={Color.BLACK}
             typography={Typography.XL_2}
             hover={Color.GRAY_500}
             hasCursor
           >
             IDE
-          </Box>
+          </TextElement>
         </Link>
-      </Container>
-      <Container>
-        <Box
+      </Flexbox>
+      <Flexbox alignItems='center' gap={3}>
+        <TextElement
           color={Color.BLACK}
           typography={Typography.XL_2}
           hover={Color.GRAY_500}
@@ -63,8 +65,8 @@ export const Header: React.FC = () => {
           }
         >
           {t('common:login')}
-        </Box>
-        <Box
+        </TextElement>
+        <TextElement
           color={Color.BLACK}
           typography={Typography.XL_2}
           hover={Color.GRAY_500}
@@ -82,14 +84,14 @@ export const Header: React.FC = () => {
           }
         >
           {t('common:signUp')}
-        </Box>
-        <Box>
+        </TextElement>
+        <TextElement>
           <ThemeSwitcher />
-        </Box>
-        <Box>
+        </TextElement>
+        <TextElement>
           <LngSelector />
-        </Box>
-      </Container>
+        </TextElement>
+      </Flexbox>
     </HeaderContainer>
   )
 }
