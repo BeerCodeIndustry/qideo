@@ -12,7 +12,7 @@
     "pre-commit": "npx --no-install lint-staged"
   },
   "dependencies": {
-    "@beercode/common-frontend": "^0.16.0",
+    "@beercode/common-frontend": "^0.17.2",
     "@beercode/common-icons": "^0.6.1",
     "@beercode/common-utils": "^0.6.1",
     "@beercode/react-folder-tree": "^0.1.5",

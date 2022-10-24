@@ -2,7 +2,6 @@ import {
   Color,
   ModalSize,
   Opacity,
-  TextElement,
   Typography,
 } from '@beercode/common-frontend'
 import Link from 'next/link'
@@ -14,7 +13,7 @@ import { LngSelector } from '../LngSelector'
 import { Login } from '../Login'
 import { SignUp } from '../SignUp'
 import { ThemeSwitcher } from '../ThemeSwitcher'
-import { HeaderContainer } from './Header.styles'
+import { Box, Container, HeaderContainer } from './Header.styles'
 
 export const Header: React.FC = () => {
   const { t } = useTranslation()
@@ -22,75 +21,75 @@ export const Header: React.FC = () => {
 
   return (
     <HeaderContainer>
-      <TextElement color={Color.BLACK} typography={Typography.XL_4_BOLD}>
-        Qideo
-      </TextElement>
-      <ThemeSwitcher />
-      <TextElement
-        color={Color.BLACK}
-        typography={Typography.XL_2}
-        hover={Color.GRAY_500}
-        cursor
-      >
-        {t('page.practicum')}
-      </TextElement>
-      <TextElement
-        color={Color.BLACK}
-        typography={Typography.XL_2}
-        hover={Color.GRAY_500}
-        cursor
-      >
-        {t('page.courses')}
-      </TextElement>
-      <Link href='/ide'>
-        <TextElement
+      <Container>
+        <Box color={Color.BLACK} typography={Typography.XL_4_BOLD}>
+          Qideo
+        </Box>
+        <Box
           color={Color.BLACK}
           typography={Typography.XL_2}
           hover={Color.GRAY_500}
-          cursor
+          hasCursor
         >
-          IDE
-        </TextElement>
-      </Link>
-      <TextElement
-        color={Color.BLACK}
-        typography={Typography.XL_2}
-        hover={Color.GRAY_500}
-        cursor
-        onClick={() =>
-          dispatch(
-            addModal({
-              size: ModalSize.MEDIUM,
-              modalColor: Color.BLUE_500,
-              backgroundColor: [Color.WHITE, Opacity._30_],
-              crossColor: Color.WHITE,
-              children: <Login />,
-            }),
-          )
-        }
-      >
-        {t('common:login')}
-      </TextElement>
-      <TextElement
-        color={Color.BLACK}
-        typography={Typography.XL_2}
-        hover={Color.GRAY_500}
-        cursor
-        onClick={() =>
-          dispatch(
-            addModal({
-              size: ModalSize.MEDIUM,
-              modalColor: Color.BLUE_500,
-              backgroundColor: [Color.WHITE, Opacity._30_],
-              crossColor: Color.WHITE,
-              children: <SignUp />,
-            }),
-          )
-        }
-      >
-        {t('common:signUp')}
-      </TextElement>
-      <LngSelector />
+          {t('page.practicum')}
+        </Box>
+        <Link href='/ide'>
+          <Box
+            color={Color.BLACK}
+            typography={Typography.XL_2}
+            hover={Color.GRAY_500}
+            hasCursor
+          >
+            IDE
+          </Box>
+        </Link>
+      </Container>
+      <Container>
+        <Box
+          color={Color.BLACK}
+          typography={Typography.XL_2}
+          hover={Color.GRAY_500}
+          hasCursor
+          onClick={() =>
+            dispatch(
+              addModal({
+                size: ModalSize.MEDIUM,
+                modalColor: Color.BLUE_500,
+                backgroundColor: [Color.WHITE, Opacity._30_],
+                crossColor: Color.WHITE,
+                children: <Login />,
+              }),
+            )
+          }
+        >
+          {t('common:login')}
+        </Box>
+        <Box
+          color={Color.BLACK}
+          typography={Typography.XL_2}
+          hover={Color.GRAY_500}
+          hasCursor
+          onClick={() =>
+            dispatch(
+              addModal({
+                size: ModalSize.MEDIUM,
+                modalColor: Color.BLUE_500,
+                backgroundColor: [Color.WHITE, Opacity._30_],
+                crossColor: Color.WHITE,
+                children: <SignUp />,
+              }),
+            )
+          }
+        >
+          {t('common:signUp')}
+        </Box>
+        <Box>
+          <ThemeSwitcher />
+        </Box>
+        <Box>
+          <LngSelector />
+        </Box>
+      </Container>
     </HeaderContainer>
   )
 }

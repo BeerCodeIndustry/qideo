@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux'
 import { toggleTheme } from 'src/redux/reducers/common.reducer'
 
-import { Button, Input, Label } from './ThemeSwitcher.styles'
+import { Button, Container, Input, Label } from './ThemeSwitcher.styles'
 
 export const ThemeSwitcher: React.FC = () => {
   const dispatch = useDispatch()
 
   return (
-    <>
+    <Container>
       <Input
         className='react-switch-checkbox'
         id='react-switch-new'
@@ -17,6 +17,6 @@ export const ThemeSwitcher: React.FC = () => {
       <Label className='react-switch-label' htmlFor='react-switch-new'>
         <Button className='react-switch-button' />
       </Label>
-    </>
+    </Container>
   )
 }

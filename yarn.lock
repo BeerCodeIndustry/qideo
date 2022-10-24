@@ -1250,10 +1250,10 @@
     styled-components "^5.3.5"
     typescript "^4.8.3"
 
-"@beercode/common-frontend@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@beercode/common-frontend/-/common-frontend-0.16.0.tgz#8d2687dce6b24eae25142ae8641dea94b2a72582"
-  integrity sha512-JbeNOz1GsNZXCIgd7D4i/yLn5u11uZizOdDXb7IUOyWHuOFBEk/3N+mPCVo9fsbLXZPVG3BsGlADUuqH17PyHA==
+"@beercode/common-frontend@^0.17.2":
+  version "0.17.2"
+  resolved "https://registry.yarnpkg.com/@beercode/common-frontend/-/common-frontend-0.17.2.tgz#d848576a57b2f2d615101c66c8389c2322c72803"
+  integrity sha512-LxK5nADlS30F6gFwk3tPhkpk5Xos/OExDqdsNHYyeZ+8x6IVpmW0cRNMUFBGCkjGtL4g+Tb3sBnLS6HhW9TbuQ==
   dependencies:
     "@beercode/common-icons" "^0.6.1"
     "@beercode/common-utils" "^0.5.0"
