@@ -1,13 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { useLocale } from '../hooks/useLocale'
 import { Page } from '../layouts/Page'
-import { Locale } from '../types/localization'
 
 const Home: NextPage = () => {
-  const { changeLocale } = useLocale()
-
   return (
     <>
       <Head>
@@ -17,8 +13,7 @@ const Home: NextPage = () => {
       </Head>
 
       <Page>
-        <div onClick={() => changeLocale(Locale.EN)}>{Locale.EN}</div>
-        <div onClick={() => changeLocale(Locale.RU)}>{Locale.RU}</div>
+        <div>Main Content</div>
       </Page>
     </>
   )

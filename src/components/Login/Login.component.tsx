@@ -1,38 +1,36 @@
-import { useFormik } from 'formik'
+import { Flexbox } from '@beercode/common-frontend'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { useTranslation } from 'hooks/useTranslation'
 
-import { Form, LoginContainer } from './Login.styles'
+import { validationSchema } from '../../utils/validate'
+import { ButtonSignUp, ErrorMessageStyle } from '../SignUp'
 import { LoginParams } from './Login.types'
 
 export const Login: React.FC = () => {
   const { t } = useTranslation()
 
-  const formik = useFormik<LoginParams>({
-    initialValues: {
-      username: '',
-      password: '',
-    },
-    onSubmit: () => {},
-  })
+  const initialValues: LoginParams = {
+    username: '',
+    password: '',
+  }
 
   return (
-    <LoginContainer>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={() => {}}
+    >
       <Form>
-        <label htmlFor='username'>{t('common:username')}</label>
-        <input
-          id='username'
-          name='username'
-          onChange={formik.handleChange}
-          value={formik.values.username}
-        />
-        <label htmlFor='password'>{t('common:password')}</label>
-        <input
-          id='password'
-          name='password'
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
+        <Flexbox flexDirection='column'>
+          <label htmlFor='username'>{t('common:username')}</label>
+          <Field type='text' id='username' name='username' />
+          <ErrorMessage name='username' component={ErrorMessageStyle} />
+          <label htmlFor='password'>{t('common:password')}</label>
+          <Field type='password' id='password' name='password' />
+          <ErrorMessage name='password' component={ErrorMessageStyle} />
+          <ButtonSignUp type='submit'>{t('common:login')}</ButtonSignUp>
+        </Flexbox>
       </Form>
-    </LoginContainer>
+    </Formik>
   )
 }
