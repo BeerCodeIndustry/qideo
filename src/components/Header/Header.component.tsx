@@ -6,8 +6,8 @@ import {
   TextElement,
   Typography,
 } from '@beercode/common-frontend'
+import { useTranslation } from 'hooks/useTranslation'
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { addModal } from 'src/redux/reducers/common.reducer'
 

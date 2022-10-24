@@ -3,3 +3,4 @@
 lint-staged.config.js
 next.config.js
 .eslintrc.js
+next-i18next.config.js

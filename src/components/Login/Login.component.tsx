@@ -1,10 +1,10 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { useTranslation } from 'react-i18next'
-
 import { Flexbox } from '@beercode/common-frontend'
-import { LoginParams } from './Login.types'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { useTranslation } from 'hooks/useTranslation'
+
 import { validationSchema } from '../../utils/validate'
-import { ErrorMessageStyle, ButtonSignUp } from '../SignUp'
+import { ButtonSignUp, ErrorMessageStyle } from '../SignUp'
+import { LoginParams } from './Login.types'
 
 export const Login: React.FC = () => {
   const { t } = useTranslation()
