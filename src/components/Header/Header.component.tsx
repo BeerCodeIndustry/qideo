@@ -1,5 +1,6 @@
 import {
   Color,
+  Flexbox,
   ModalSize,
   Opacity,
   TextElement,
@@ -22,75 +23,75 @@ export const Header: React.FC = () => {
 
   return (
     <HeaderContainer>
-      <TextElement color={Color.BLACK} typography={Typography.XL_4_BOLD}>
-        Qideo
-      </TextElement>
-      <ThemeSwitcher />
-      <TextElement
-        color={Color.BLACK}
-        typography={Typography.XL_2}
-        hover={Color.GRAY_500}
-        cursor
-      >
-        {t('qideo:page.practicum')}
-      </TextElement>
-      <TextElement
-        color={Color.BLACK}
-        typography={Typography.XL_2}
-        hover={Color.GRAY_500}
-        cursor
-      >
-        {t('qideo:page.courses')}
-      </TextElement>
-      <Link href='/ide'>
+      <Flexbox alignItems='center' gap={3}>
+        <TextElement color={Color.BLACK} typography={Typography.XL_4_BOLD}>
+          Qideo
+        </TextElement>
         <TextElement
           color={Color.BLACK}
           typography={Typography.XL_2}
           hover={Color.GRAY_500}
-          cursor
+          hasCursor
         >
-          IDE
+          {t('page.practicum')}
         </TextElement>
-      </Link>
-      <TextElement
-        color={Color.BLACK}
-        typography={Typography.XL_2}
-        hover={Color.GRAY_500}
-        cursor
-        onClick={() =>
-          dispatch(
-            addModal({
-              size: ModalSize.MEDIUM,
-              modalColor: Color.BLUE_500,
-              backgroundColor: [Color.WHITE, Opacity._30_],
-              crossColor: Color.WHITE,
-              children: <Login />,
-            }),
-          )
-        }
-      >
-        {t('common:login')}
-      </TextElement>
-      <TextElement
-        color={Color.BLACK}
-        typography={Typography.XL_2}
-        hover={Color.GRAY_500}
-        cursor
-        onClick={() =>
-          dispatch(
-            addModal({
-              size: ModalSize.MEDIUM,
-              modalColor: Color.ORANGE_300,
-              backgroundColor: [Color.WHITE, Opacity._30_],
-              crossColor: Color.WHITE,
-              children: <SignUp />,
-            }),
-          )
-        }
-      >
-        {t('common:signUp')}
-      </TextElement>
-      <LngSelector />
+        <Link href='/ide'>
+          <TextElement
+            color={Color.BLACK}
+            typography={Typography.XL_2}
+            hover={Color.GRAY_500}
+            hasCursor
+          >
+            IDE
+          </TextElement>
+        </Link>
+      </Flexbox>
+      <Flexbox alignItems='center' gap={3}>
+        <TextElement
+          color={Color.BLACK}
+          typography={Typography.XL_2}
+          hover={Color.GRAY_500}
+          hasCursor
+          onClick={() =>
+            dispatch(
+              addModal({
+                size: ModalSize.MEDIUM,
+                modalColor: Color.BLUE_500,
+                backgroundColor: [Color.WHITE, Opacity._30_],
+                crossColor: Color.WHITE,
+                children: <Login />,
+              }),
+            )
+          }
+        >
+          {t('common:login')}
+        </TextElement>
+        <TextElement
+          color={Color.BLACK}
+          typography={Typography.XL_2}
+          hover={Color.GRAY_500}
+          hasCursor
+          onClick={() =>
+            dispatch(
+              addModal({
+                size: ModalSize.MEDIUM,
+                modalColor: Color.BLUE_500,
+                backgroundColor: [Color.WHITE, Opacity._30_],
+                crossColor: Color.WHITE,
+                children: <SignUp />,
+              }),
+            )
+          }
+        >
+          {t('common:signUp')}
+        </TextElement>
+        <TextElement>
+          <ThemeSwitcher />
+        </TextElement>
+        <TextElement>
+          <LngSelector />
+        </TextElement>
+      </Flexbox>
     </HeaderContainer>
   )
 }
