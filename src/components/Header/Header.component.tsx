@@ -5,8 +5,8 @@ import {
   TextElement,
   Typography,
 } from '@beercode/common-frontend'
+import { useTranslation } from 'hooks/useTranslation'
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { addModal } from 'src/redux/reducers/common.reducer'
 
@@ -28,7 +28,7 @@ export const Header: React.FC = () => {
         hover={Color.GRAY_500}
         cursor
       >
-        {t('page.practicum')}
+        {t('qideo:page.practicum')}
       </TextElement>
       <TextElement
         color={Color.BLACK}
@@ -36,7 +36,7 @@ export const Header: React.FC = () => {
         hover={Color.GRAY_500}
         cursor
       >
-        {t('page.courses')}
+        {t('qideo:page.courses')}
       </TextElement>
       <Link href='/ide'>
         <TextElement

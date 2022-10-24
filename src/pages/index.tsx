@@ -17,8 +17,8 @@ const Home: NextPage = () => {
       </Head>
 
       <Page>
-        <a onClick={() => changeLocale(Locale.EN)}>{Locale.EN}</a>
-        <a onClick={() => changeLocale(Locale.RU)}>{Locale.RU}</a>
+        <div onClick={() => changeLocale(Locale.EN)}>{Locale.EN}</div>
+        <div onClick={() => changeLocale(Locale.RU)}>{Locale.RU}</div>
       </Page>
     </>
   )

@@ -1,5 +1,5 @@
 import { useFormik } from 'formik'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'hooks/useTranslation'
 
 import { Form, LoginContainer } from './Login.styles'
 import { LoginParams } from './Login.types'
