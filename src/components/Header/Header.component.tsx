@@ -2,14 +2,14 @@ import {
   Color,
   Flexbox,
   ModalSize,
-  Opacity,
   TextElement,
   Typography,
 } from '@beercode/common-frontend'
+import { useTheme } from 'hooks/useTheme'
 import { useTranslation } from 'hooks/useTranslation'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
-import { addModal } from 'src/redux/reducers/common.reducer'
+import { addModal } from 'reducers/common.reducer'
 
 import { LngSelector } from '../LngSelector'
 import { Login } from '../Login'
@@ -18,6 +18,7 @@ import { ThemeSwitcher } from '../ThemeSwitcher'
 import { HeaderContainer } from './Header.styles'
 
 export const Header: React.FC = () => {
+  const { theme } = useTheme()
   const { t } = useTranslation()
   const dispatch = useDispatch()
 
@@ -55,10 +56,8 @@ export const Header: React.FC = () => {
           onClick={() =>
             dispatch(
               addModal({
+                ...theme.modal,
                 size: ModalSize.MEDIUM,
-                modalColor: Color.BLUE_500,
-                backgroundColor: [Color.WHITE, Opacity._30_],
-                crossColor: Color.WHITE,
                 children: <Login />,
               }),
             )
@@ -74,10 +73,8 @@ export const Header: React.FC = () => {
           onClick={() =>
             dispatch(
               addModal({
+                ...theme.modal,
                 size: ModalSize.MEDIUM,
-                modalColor: Color.BLUE_500,
-                backgroundColor: [Color.WHITE, Opacity._30_],
-                crossColor: Color.WHITE,
                 children: <SignUp />,
               }),
             )
